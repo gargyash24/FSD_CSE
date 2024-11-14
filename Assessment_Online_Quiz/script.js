@@ -47,7 +47,7 @@ const updateQuestion = () => {
     });
 
     bton.appendChild(submitButton);
-    submitButton.style.display = currentQuestionIndex === questions.length - 1 ? "inline" : "none";
+    submitButton.style.display = currentQuestionIndex === questions.length - 1 ? "Block" : "none";
     submitButton.style.backgroundColor = "red";
 };
 
@@ -71,12 +71,15 @@ previousButton.addEventListener("click", () => {
         currentQuestionIndex--;
         updateQuestion();
     }
+    submitButton.style.display='none'
+    bton.removeChild(Score)
 });
 
 submitButton.addEventListener("click", () => {
     checkAnswer();
     Score.textContent=`Quiz Completed! Your score is ${score} out of ${questions.length}.`;
     bton.appendChild(Score)
+    submitButton.style.display='block'
 });
 updateQuestion();
 
